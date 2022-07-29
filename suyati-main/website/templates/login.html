@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}{% endblock %} {% block content
+    %}
+    <form method="POST" style="margin-top:30px">
+      <h3 align="center"><p style="color:white">LOGIN</p></h3>
+      <div class="form-group">
+        
+        <label for="email"><p style="color:white">Email Address</p></label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password"><p style="color:white">Password</p></label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+        />
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    {% endblock %}

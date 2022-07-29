@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+  <h1 align="center"><p style="font-family:verdana; margin-bottom:70px; margin-top:40px;">Fraud Detection System</p></h1>
+  
+<div class="loading container d-flex"  id="loading" style=" width:fit-content; justify-content:center; visibility:collapse;">
+   <img height="250" width="250" src="{{url_for('static',filename='images/buffer.gif')}}">
+  </div>
+
+  <!-- <div id="change">
+    <ul class="list-group list-group-flush" id="notes">
+      {% for note in user.notes %}
+      <li class="list-group-item">
+        {{ note.data }}
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul> -->
+
+    <div align="center">
+      <a  href="{{url_for('auth.validate')}}">
+        <button id="click" type="submit" class="btn btn-primary">Start Fraud Verification</button>
+      </a>
+    </div> 
+  </div>
+   
+  <div id="resultz" style="visibility:collapse; position:absolute; left:45%;">
+    <p style="font-size:20px">redirecting please wait...</p>
+  </div>
+   
+   <script>
+     var click=document.getElementById("click");
+     var loading=document.getElementById("loading");
+     var change=document.getElementById("change");
+     var resultz=document.getElementById("resultz");
+
+      function reset(){
+      loading.style.visibility = "collapse";
+    
+      resultz.style.visibility = "visible";
+    }      
+      
+      click.onclick=function(){
+      
+        loading.style.visibility = "visible";
+      
+        change.style.visibility = "collapse";
+
+        setTimeout(reset,20000);
+
+      }
+  
+   </script>
+    {% endblock %}
