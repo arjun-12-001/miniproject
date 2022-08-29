@@ -6,6 +6,8 @@ from sklearn.metrics import accuracy_score
 import pickle
 import os
 
+#this file is used to train the machine learning model using logestic regression
+
 csv_path = os.path.join(os.getcwd(), "creditcard.csv")
 credit_card_data = pd.read_csv(csv_path)
 

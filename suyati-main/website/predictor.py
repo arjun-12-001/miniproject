@@ -26,11 +26,6 @@ def run():
       model_path = os.path.join(os.getcwd(), "model_pickel")
       with open(model_path,"rb") as f:
           model=pickle.load(f)
-      #training model and fitting data 
-      #with open("model_pickel","rb") as f:
-      #      model=pickle.load(f)
-
-      #model fit and ran for predicting
       rows = X.values.tolist()
       cash = Z.values.tolist()
       predict_data = []
@@ -52,3 +47,8 @@ def run():
 if __name__ == "__main__":
       run()
       #   X_test_pred = np.append(X_test_prediction)
+      #training model and fitting data 
+      #with open("model_pickel","rb") as f:
+      #      model=pickle.load(f)
+
+      #model fit and ran for predicting

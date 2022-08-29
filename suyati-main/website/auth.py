@@ -71,6 +71,7 @@ def sign_up():
 def validate():
     r1=random.randint(0,100)
     datavals,amount,pfr,plg = predictor.run()
+    return render_template("results.html",amt=amount[r1],value="fraud",perc_f=pfr,perc_l=plg)
     # var_data = sb.check_output("python predictor.py" )
     # var_data = var_data.decode()
     # print(var_data)
@@ -80,4 +81,3 @@ def validate():
     # team_info = zip(amount,datavals)
 
     # return render_template("results.html",team_info=team_info,perc_f=pfr,perc_l=plg)
-    return render_template("results.html",amt=amount[r1],value=datavals[r1],perc_f=pfr,perc_l=plg)
