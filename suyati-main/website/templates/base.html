@@ -33,30 +33,31 @@
   </head>
   
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 10vh">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>      
-      
-      <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
-          {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          {% else %}
-          <a class="nav-item nav-link" id="login" href="/">Login</a>
-          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
-          {% endif %}
-        </div>      
-      </div>
-      <a href="#"><img height="53" width="350" 
-        src="{{url_for('static',filename='images/logo')}}"></a>  
-    </nav>
+      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="height: 12vh">
+          <a class="navbar-brand" href="#">
+              <img src="{{url_for('static',filename='images/logo')}}" width="350" height="50" class="d-inline-block align-top" alt="">
+          </a>
+          <button class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbar"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbar">
+              <div class="navbar-nav">
+                  {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" id="home" href="/">Home</a>
+                  <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+                  {% else %}
+                  <a class="nav-item nav-link" id="login" href="/">Login</a>
+                  <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+                  {% endif %}
+              </div>
+          </div>
+
+      </nav>
 
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==

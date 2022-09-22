@@ -56,8 +56,8 @@
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="height: 10vh"> 
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="height: 10vh">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -183,6 +183,7 @@
         }
     </script>
 
+
     <div id="change">
 
         <div align="center">
@@ -205,9 +206,13 @@
                 </div>
                 <div class="modal-body">
                     {% if value|string() != "legit" %}
+                    <div class="alert alert-danger" role="alert">
                         <p>fraudulant transaction detected ,transaction blocked!</p>
+                    </div>
                     {% else %}
-                        <p >transaction completed succesfully !</p>
+                    <div class="alert alert-success" role="alert">
+                        <p>transaction completed succesfully !</p>
+                    </div>
                     {% endif %}
                 </div>
 
