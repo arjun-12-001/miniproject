@@ -1,3 +1,4 @@
+import email
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -6,6 +7,7 @@ from . import predictor
 import random
 from flask_login import login_user, login_required, logout_user, current_user
 import subprocess as sb
+import smtplib as s
 
 auth = Blueprint('auth', __name__)
 
@@ -71,7 +73,22 @@ def sign_up():
 def validate():
     r1=random.randint(0,100)
     datavals,amount,pfr,plg = predictor.run()
-    return render_template("results.html",amt=amount[r1],value="fraud",perc_f=pfr,perc_l=plg)
+    if datavals[r1] == 'fraud':
+        email_sender="arjunramesh122@gmail.com"
+        email_rec = "arjunramesh122@gmail.com"
+        subject='fraud transaction detected ! '
+        pswd = 'adrvs0021'
+        body='fraud transaction of '+str(amount)+' occured'
+        try:
+            con = s.SMTP('smtp.gmail.com',587)
+            con.starttls()
+            con.login(email_sender,pswd)
+            msg="Subject:{}\n\n{}".format(subject,body)
+            con.sendmail(email_sender,"arjun123@yopmail.com",msg)
+            con.quit()
+        except:
+            print("some error occured")
+    return render_template("results.html",amt=amount[r1],value=datavals[r1],perc_f=pfr,perc_l=plg)
     # var_data = sb.check_output("python predictor.py" )
     # var_data = var_data.decode()
     # print(var_data)
